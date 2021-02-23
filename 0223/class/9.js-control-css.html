@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color:red
+        }
+        .green{
+            color:green
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <p :class='{red:flag,green:!flag}'>这是一段话</p>
+        <button @click="changeColor">点击变色</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                red:"red",
+                flag:true,
+                green:"green"
+            },
+            methods:{
+                changeColor(){
+                     this.flag=!this.flag
+                }
+            }
+        })
+    </script>
+</body>
+</html>

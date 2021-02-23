@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="root">
+       <!-- 插值(双括号表达式{{}} 
+        1.只能放表达式，不能放语句
+        2.插值只能写在两个元素中间，不能用于属性
+        3.表达式：没有分号、有返回值
+       -->
+       <p>{{msg}}</p>
+       
+   </div>
+   <script src="./vue.js"></script>
+   <script>
+       const msg="hello-vue"
+       new Vue({
+           el:"#root",//element是通过document.querySelector("#root")获取到的
+           data:{
+               msg
+           }
+       })
+   </script>
+</body>
+</html>

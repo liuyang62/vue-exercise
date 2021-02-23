@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color:red
+        }
+        .green{
+            color:green
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- js原生写法
+        <p class="red">这是一段话</p> -->
+        <!-- 使用单向数据绑定的方式
+        <p :class="color">这是一段话</p> -->
+        <!-- 使用数组设置样式
+        <p :class="[color]">这是一段话</p> -->
+        <!-- 使用对象形式设置样式 -->
+        <!-- <p :class="{'red':isRed}">这是一段话</p> -->
+        <!-- 设置行内样式
+        <p :style='{color:"red"}'>这是一段话</p> -->
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                color:"red",
+                isRed:true, 
+            }  
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <input type="text">
+        <button v-on:click="submitHandle">提交</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                name:"name"
+            },
+            methods:{
+                //this指向vue实例，这里只能用普通函数，无法使用箭头函数，箭头函数this指向window
+                submitHandle(event){
+                    console.log(this,event)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

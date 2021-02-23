@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <!-- v-model命令可以实现数据双向绑定（数据双向绑定）
+            绑定input元素的value值，（input中有内容）
+            绑定input元素的input事件（input值发生变化会自动修改绑定的data的数据）
+         -->
+        <input type="text" v-model="msg"/>
+        <p>{{msg}}</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        const msg="hello";
+        const re=new Vue({
+            el:"#root",
+            data:{
+                msg
+            }
+        })
+        console.log(re)
+        console.log(re.$data)
+        console.log(re.msg)
+    </script>
+</body>
+</html>
