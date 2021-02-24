@@ -7,12 +7,37 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" placeholder="firstName" /><br/>
-    <input type="text" placeholder="lastName" /><br/>
-    <input type="text" placeholder="fullName" /><br/>
+    <div id="root">
+         姓:<input type="text" placeholder="firstName" v-model="firstName" /><br/>
+         名:<input type="text" placeholder="lastName"  v-model="lastName"/><br/>
+         姓名：<input type="text" placeholder="fullName" v-model="fullName"/><br/>
+    </div>
+   
     <script src="./vue.js"></script>
     <script>
-
+        new Vue({
+            el:"#root",
+            data:{
+                firstName:"zhao",
+                lastName:"xianyong"
+            },
+            computed:{
+                //只读，不能改变
+                // fullName(){
+                //     return this.firstName+" "+this.lastName
+                // }
+                fullName:{
+                    get(){
+                        return this.firstName+" "+this.lastName
+                    },
+                    set(newValue){
+                        const [firstName,lastName]=newValue.split(" ");
+                        this.firstName=firstName;
+                        this.lastName=lastName
+                    }
+                }
+            }
+        })
     </script>
 </body>
 </html>

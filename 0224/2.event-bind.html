@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <p>{{num}}</p>
+        <button @click="num++">普通事件绑定简写</button><br><br>
+        <!-- 普通事件绑定不传递参数则函数接收时候有一个参数，该参数为event事件对象 -->
+        <button @click="eventHandle">普通事件绑定不传递参数</button><br><br>
+        <!-- 普通事件绑定传递参数则函数接收时候为传递的参数,可以通过arguments获取到传入的所有实参-->
+        <button @click="propsHandle(1,2,3)">普通事件绑定传递参数</button><br><br>
+         <!-- 普通事件绑定传递参数和事件对象，事件对象需要加$-->
+        <button @click="propsEventHandle(1,2,$event)">普通事件绑定传递参数和事件对象</button><br><br>
+        <form>
+            <!-- 阻止默认事件，使用@click.prevent: -->
+            <input type="text" v-model="username"/>
+            <button type="submit" @click.prevent>点击提交</button>
+        </form>
+        <div @click="bableHandle1">
+            hello
+            <div @click.stop="bableHandle2">点击默认出发冒泡</div>
+        </div>
+         <!-- 键盘事件，使用@key.键码/单词: -->
+        <input type="text" @keyup.13="keyupHandle"/>
+        <input type="text" @keyup.space="keyupHandle"/>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                num:0,
+                username:""
+            },
+            methods:{
+                eventHandle(e){
+                    console.log(e)
+                },
+                propsHandle(){
+                    console.log(arguments)
+                },
+                propsEventHandle(a,b,e){
+                    console.log(a,b,e)
+                },
+                bableHandle1(){
+                    console.log("事件触发了,outer")
+                },
+                bableHandle2(){
+                    console.log("事件触发了,inner")
+                },
+                keyupHandle(){
+                    console.log("enter键按下抬起了")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

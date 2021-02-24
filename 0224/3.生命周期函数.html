@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <button @click="$destroy()">点击卸载</button>
+        <div v-show="isshow">老赵是只哈士奇</div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                isshow:true
+            },
+            mounted(){
+                //设置定时器和发送请求都是在初始化完成后进行的
+               this.timer= setInterval(()=>{ 
+                     console.log(1)
+                    this.isshow=!this.isshow
+                },1000)
+            },
+            beforeDestroy(){
+                //一般用于清除定时器
+                clearInterval(this.timer)
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <div id="root">
+        <input type="text" placeholder="firstname" v-model="firstName"></br>
+        <input type="text" placeholder="lastname" v-model="lastName"></br>
+        <input type="text" placeholder="fullname" v-model="fullName"></br>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                firstName:"lao",
+                lastName:"zhao",
+                fullName:"lao zhao"
+            },
+            watch:{
+                firstName(newView){
+                   this.fullName= newView+" "+this.lastName
+                },
+                lastName(newView){
+                    this.fullName=this.firstName+" "+newView
+                },
+                fullName(newView){
+                    const [firstName,lastName]=newView.split(" ")
+                    this.firstName=firstName;
+                    this.lastName=lastName
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

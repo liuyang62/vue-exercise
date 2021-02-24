@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h3>格式化日期</h3>
+        <div>{{date|formateDate}}</div>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.10.3/dayjs.min.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                date:Date.now()
+            },
+            filters:{
+                formateDate(value){
+                    return dayjs(value).format("YYYY-MM-DD HH:mm:ss")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

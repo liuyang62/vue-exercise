@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color:red
+        }
+        .green{
+            color:green
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <button @click="chooseHandle">老赵今晚会选择谁呢</button>
+        <p v-if="choose" :class='color'>龅牙妹</p>
+        <!-- <p v-else-if=true>hah</p> -->
+        <p v-else :class='color'>石榴姐</p>
+
+        <!-- <p v-if="choose" :class='{red:changeColor,green:!changeColor}'>龅牙妹</p>
+        <p v-else :class='{red:changeColor,green:!changeColor}'>石榴姐</p> -->
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                choose:true,
+                color:"red",
+                // red:"red",
+                // green:"green",
+                changeColor:true
+            },
+            methods:{
+                chooseHandle(){
+                    this.choose=!this.choose;
+                    // this.changeColor=!this.changeColor
+                    this.color=this.color==="red"?"green":"red";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .v-leave{
+           transform:translateX(0px)
+        }
+        .v-leave-active{
+            transition:transform 2s ;
+        }
+        .v-leave-to{
+            transform:translateX(100px)
+        }
+        .v-enter{
+           transform:translateX(100px)
+        }
+        .v-enter-active{
+            transition:transform 2s ;
+        }
+        .v-enter-to{
+            transform:translateX(0px)
+        }
+        
+        .small-leave{
+           transform:scale(0.5)
+        }
+        .small-leave-active{
+            transition:transform 2s ;
+        }
+        .small-leave-to{
+            transform:scale(1)
+        }
+        .small-enter{
+            transform:scale(1)
+        }
+        .small-enter-active{
+            transition:transform 2s ;
+        }
+        .small-enter-to{
+            transform:scale(0.5)
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <transition name="small">
+            <div v-show='isShow'>老赵是个哈巴狗</div>
+        </transition>
+        <button @click="isShow=!isShow">点击移动</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                isShow:true
+            }
+        })
+    </script>
+</body>
+</html>
