@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <p v-show="flag" v-upper-case="msg1">{{msg1}}</p>
+        <p v-show="!flag" v-lower-case="msg2">{{msg2}}</p>
+        <button v-on:click="flag=!flag">点击</button>
+    </div>
+    <script src="../class//vue.js"></script>
+    <script>
+        Vue.directive("upper-case",function(el,data){
+            el.textContent=data.value.toUpperCase()
+        })
+        Vue.directive("lower-case",function(el,data){
+            el.textContent=data.value.toLowerCase()
+        })
+        new Vue({
+            el:"#root",
+            data:{
+              msg1:"Hello" ,
+              msg2:"World",
+              flag:true,
+            },
+            // directives:{
+            //     //指令函数名为小写，且加-
+            //     ["upper-case"](el,data){
+            //         el.textContent=data.value.toUpperCase()
+            //     },
+            //     ["lower-case"](el,data){
+            //         el.textContent=data.value.toLowerCase()
+            //     }
+            // }
+        })
+    </script>
+</body>
+</html>

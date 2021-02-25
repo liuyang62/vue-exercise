@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+       <input type="text" placeholder="请输入要查找的姓名" v-model="findName"/>
+       <ul>
+           <li v-for="(person,index) in filterData" :key="person.id">{{person.id}}---{{person.name}}---{{person.age}}</li>
+       </ul>
+       <button @click="status='asc'">年龄升序排列</button>
+       <button @click="status='desc'">年龄降序排列</button>
+       <button @click="status='origin'">恢复初始列表</button>
+    </div>
+    <script src="../class/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                personsData:[
+                    {id:1,name:"Lucy",age:19},
+                    {id:2,name:"Lily",age:10},
+                    {id:3,name:"Nacy",age:3},
+                    {id:4,name:"Tom",age:11},
+                    {id:5,name:"Jerry",age:7},
+                    {id:6,name:"Jenny",age:12},
+                    {id:7,name:"Daney",age:15},
+                    {id:8,name:"Rose",age:6}
+                ],
+                findName:"",
+                status:"origin"
+            },
+            computed:{
+                filterData(){
+                   const filterData=this.personsData.filter(item=>{
+                       return item.name.includes(this.findName);
+                   })
+                   if(this.status!=="origin"){
+                        const sortData=filterData.sort((a,b)=>{
+                            return this.status==="asc"?a.age-b.age:b.age-a.age
+                        })
+                    return sortData;
+                   }
+                   return filterData
+                } 
+            }
+        })
+    </script>
+</body>
+</html>

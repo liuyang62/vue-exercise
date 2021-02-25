@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+    <form>
+    <table>
+            <tbody>
+                <tr>
+                    <td>姓名：</td>
+                    <td><input type="text" v-model="users.username"/></td>
+                </tr>
+                <tr>
+                    <td>密码:</td>
+                    <td><input type="password" v-model="users.password"/></td>
+                </tr>
+                <tr>
+                    <td>性别：</td>
+                    <td>
+                        <input type="radio" :v-model="users.gender" id="female" value="female"/><label for="female">女</label>
+                        <input type="radio" :v-model="users.gender" id="male" value="male"/><label for="male">男</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>爱好：</td>
+                    <td>
+                        <input type="checkbox" v-model="users.hobby" id="bas" value="bas"/><label for="bas">篮球</label>
+                        <input type="checkbox" v-model="users.hobby" id="mou" value="mou"/><label for="male">爬山</label>
+                        <input type="checkbox" v-model="users.hobby" id="run" value="run"/><label for="female">跑步</label>
+                        <input type="checkbox" v-model="users.hobby" id="sing" value="sing"/><label for="male">唱歌</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>选择国家:</td>
+                    <td>
+                        <select v-model="users.country">
+                            <option value="nochoose">未选择</option>
+                            <option value="china">中国</option>
+                            <option value="japan">日本</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                          <textarea v-model="users.introduction" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><button type="submit">提交</button></td>
+                </tr>
+            </tbody>
+    </table>
+    </form>
+    </div>
+    
+    <script src="../class/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                users:{
+                username:"",
+                password:"",
+                gender:0,
+                hobby:[],
+                country:"",
+                introduction:""
+            }  
+            }
+        })
+    </script>
+</body>
+</html>

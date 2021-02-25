@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h3>格式化日期</h3>
+        <p v-cloak>{{date|dateFormat("YYYY-MM-DD")}}</p>
+        <p v-cloak>{{date|dateFormat("HH:mm:ss")}}</p>
+    </div>
+    <script src="../class//vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.10.3/dayjs.min.js"></script>
+    <script>
+        Vue.filter("dateFormat",function(date,style){
+            return dayjs(date).format(style)
+        })
+        new Vue({
+            el:"#root",
+            data:{
+                date:Date.now()
+            },
+            // filters:{
+            //     dateFormat(data,style){
+            //         return dayjs(data).format(style)
+            //     }
+            // }
+        })
+    </script>
+</body>
+</html>
