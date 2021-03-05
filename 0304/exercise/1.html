@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function showMoney() {
+    //   return this.money
+    // };
+    // var personA = new Object;
+    // var personB = new Object;
+    // personA.money = "100";//对象添加属性
+    // personB.money = "150";
+    // personA.showMoney = showMoney;//对象上添加方法
+    // personB.showMoney = showMoney;
+    // console.log(personA,personB)
+    // console.log(personA===personB)
+    // personA.showMoney( )
+
+
+    // 输出结果：
+    // personA.showMoney( ); //"100" 
+    // personB.showMoney( ); //"150"
+
+    function obj(name) {
+      if(name){
+        this.name=name
+      }
+      return this
+    }
+    obj.prototype.name = "name2";
+    var a = obj("name1");
+    var b = new obj;
+    console.log(a.name,b.name)
+  </script>
+</body>
+
+</html>

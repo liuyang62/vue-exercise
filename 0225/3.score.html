@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2386504_k34lxqme9gg.css">
+    <style>
+        .score{
+            font-size:30px;
+            font-weight:bold;
+            color:skyblue;
+            padding-bottom: 5px;
+            border-bottom:5px solid skyblue;
+            margin-bottom: 10px;
+        }
+       .caculate{
+           font-size:20px;
+           font-weight:bold;
+       }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div>
+            <form @submit.prevent>
+                <table>
+                    <caption class="score">初中一年级学生考试成绩统计</caption>
+                    <tbody>
+                        <tr>
+                            <td>学生</td>
+                            <td><input type="text" v-model="name" required/></td>
+                            <td>成绩</td>
+                            <td><input type="text" v-model="sc" required/></td>
+                            <td><button @click="addstudent">添加</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            <ul>
+                <li v-for="(student) in studentsData" :key="student.id">{{student.username}}:{{student.score}}</li>
+            </ul>
+            <table>
+                <tbody class="caculate">
+                    <tr>
+                            <td>总分:</td>
+                            <td><div class="result">{{totalScore}}</div></td>
+                            <td>平均分:</td>
+                            <td><div class="result">{{averageScore}}</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                   name:"",
+                   sc:"",
+                   studentsData:[
+                    {
+                        username:"xiaoming",
+                        score:100,   
+                        id:0
+                    }
+                    ]
+                    },
+                         
+            methods:{
+                addstudent(){
+                  const score=this.sc;
+                  const username=this.name;
+                  let id=this.studentsData[this.studentsData.length-1].id+1;
+                  const studentInfo={
+                        score,username,id
+                  }
+                  this.studentsData.push(studentInfo)
+                  this.name="";
+                  this.sc=""
+                }
+            },
+            computed:{
+                totalScore(){  
+                //   let sum=0;
+                //   this.studentsData.forEach((item,index)=>{
+                //     sum+=parseFloat(item.score)
+                //    })
+                const sum=this.studentsData.reduce((p,i)=>{
+                    return p+parseFloat(i.score)
+                },0)
+                return sum  
+                },
+                averageScore(){
+                    let sum=0;
+                    let average=0;
+                  this.studentsData.forEach((item,index)=>{
+                    sum+=parseFloat(item.score);
+                    average=sum/(index+1)
+                   })
+                return average  
+                }
+                
+            }
+        })
+    </script>
+</body>
+</html>

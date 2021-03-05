@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+        <li name="hello">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+  <script>
+    const re=document.getElementsByTagName("li")[0]
+    console.log(re.attributes)
+    // const first
+  //   /*将类数组变成数组
+  //   (1)扩展运算符
+  //   const Lis=document.querySelectorAll("li")
+  //   const re=[...Lis]
+  //   (2)Array.from()
+  //   (3)[].prototype.call(类数组)
+  //   (4)Array.prototype.call(类数组)
+  //   */
+  //  //1.创建fragment文档碎片节点
+  //   const Fragment=document.createDocumentFragment()
+  //   // console.log(fragment)
+  //   //2.获取app元素，将子元素添加到文档碎片中
+  //   const app=document.getElementById("app");
+  //   //将dom元素添加到文档碎片节点中
+  //   let child;
+  //   //当将dom元素中的元素添加到文档碎片节点中，则会在dom中删除该节点
+  //   while(child=app.firstChild){
+  //     Fragment.appendChild(child)
+  //   }
+  //   // console.dir(Fragment)
+  //   //children获取去文档碎片节点的所有子元素，childNodes是获取文档碎片节点中所有节点
+  //   // console.log(Fragment.childNodes)
+  //   Array.prototype.slice.call(Fragment.childNodes).forEach(item=>{
+  //     if(item.nodeType===1){
+  //       //获取到ul
+  //       [].slice.call(item.childNodes).forEach(item=>{
+  //         if(item.nodeType===1){
+  //           item.textContent=item.textContent+"~"
+  //           console.log(item)
+  //         }
+  //       })
+  //     }
+  //   })
+  //   //将文档碎片节点插入到页面
+  //   app.appendChild(Fragment)
+  </script>
+</body>
+</html>

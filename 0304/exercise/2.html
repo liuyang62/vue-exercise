@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //请实现 javascript 中的 indexOf 功能，判断一个字符串 a 中是否包含另一个字符串 b。
+    //a）如果包含，需要返回匹配字符串 b 的位置。
+    //b）如果不包含，需要返回-1。
+    function strIncludesEle(str,ele){
+      const re= str.match(ele)//返回數組
+      if(re.length=0)return -1
+      // console.log(Object.prototype.toString.call(re))数组
+      return re.index
+      //使用字符串search方法，查找到了返回下标，找不到返回-1
+      // return str.search(ele)
+    }
+    const re=strIncludesEle("hello","ll")
+    console.log(re)
+  </script>
+</body>
+
+</html>

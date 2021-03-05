@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2386504_k34lxqme9gg.css">
+    <style>
+        #countbox{
+            display: flex;
+        }
+        .icon-count{ 
+            width:20px;
+        }
+        .icon-count>div{
+            border:1px solid black;
+        }
+        .singleprice{
+            border:1px solid black;
+            width:50px;
+            height:100%;
+            line-height:40px;
+            text-align: center; 
+        }
+        .allprice{
+            width:800px;
+            height:40px;
+            display:flex;
+           align-items: center; 
+           font-size:12px;
+        }  
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="allprice">
+                单价：<div class="singleprice">{{singprice}}</div>
+
+                数量：<div id="countbox">
+                <input type="text" v-model="count" id="count" @change="countHandle"/>
+                <div class="icon-count">
+                        <div class="iconfont icon-arrow-up2" @click="increaseHandle"></div>
+                        <div class="iconfont icon-arrow-up21" @click="decreaseHandle"></div>
+                    </div> 
+                </div>  
+                总价：<input class="singleprice" v-model="caculateAllPrice">
+                实付：(满100减50)<input class="singleprice" v-model="finaPrice">
+                实付：(每满100减30)<input class="singleprice" v-model="allPrice">
+            </div>
+ 
+       </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                count:0,
+                singprice:99,
+            },
+            methods:{
+                increaseHandle(){
+                   return this.count<10?this.count++:10
+                },
+                decreaseHandle(){
+                   return this.count>0?this.count--:0
+                },
+                countHandle(){
+                    if(this.count>10){
+                        alert("数量超过范围")
+                        return this.count=10
+                    }else{
+                        return this.count
+                    }
+                }
+            },
+            computed:{
+                //总价钱只能获取，不能修改
+                caculateAllPrice(){       
+                   return this.singprice*this.count
+                },
+                //满减(满100减100)
+               finaPrice(){
+                    let re=this.singprice*this.count;
+                    if(re>100){
+                        re=re-50;
+                    }
+                    return re
+                },
+                allPrice(){
+                    let re=this.singprice*this.count;
+                    const num=parseInt(re/100);
+                    if(re>100){
+                        re=re-30*num;
+                    }
+                    return re
+                }
+            }
+        
+        })
+    </script>
+</body>
+</html>

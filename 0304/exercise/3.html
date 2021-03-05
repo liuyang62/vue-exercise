@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var myObject = {
+    //   foo: "bar",
+    //   func: function () {
+    //     var self = this;
+    //     console.log(this.foo);//"bar"
+    //     console.log(self.foo);//"bar"
+    //     (function () {
+    //       console.log(this.foo);//undefined
+    //       console.log(self.foo);//"bar"
+    //     }());
+    //   }
+    // };
+    // myObject.func();
+
+
+    // var bb = 1;
+    // function aa(bb) {
+    //   bb = 2;
+    //   alert(bb);
+    // };
+    // aa(bb);
+    // alert(bb);
+
+
+    // var bb
+    // function aa(bb){
+    //   bb=2;
+    //   alert(bb);
+    // }
+    //  bb = 1;
+    // aa(bb);//2
+    // alert(bb);//1
+
+    // function Foo() {
+    //   var i = 0;
+    //   return function () {
+    //     console.log(i++);
+    //   }
+    // }
+    // var f1 = Foo(),
+    //   f2 = Foo();
+    // f1();//0
+    // f1();//1
+    // f2();//0
+
+    // console.log(1+ "2"+"2");//"122"
+    // console.log(1+ +"2"+"2");//"32"
+    // console.log("A"- "B"+"2");//NAN2
+    // console.log("A"- "B"+2);//NAN
+
+   
+
+    function add(n) {
+      return n = n + 1;
+    }
+    function add(n) {
+      return n = n + 3;
+    } 
+    var x,
+    x = 1,
+    y = z = 0;
+    y = add(x);
+    z = add(x);
+    //x=1,y=4,z=4
+    console.log(x,y,z)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display:none
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <!-- 相当于innerHTML，可以解析标签 -->
+        <p v-html="msg" v-cloak>{{msg}}</p>
+        <!-- 相当于textContent，不能解析标签 -->
+        <p v-text="msg" v-cloak>{{msg}}</p>
+        <p ref="ele">{{count}}</p>
+        <p v-once>{{count}}</p>
+        <button @click="count++">点击增加</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                msg:"<h3>hello World</h3>",
+                count:0
+            },
+            mounted(){
+                console.log(this.$refs.ele)
+            }
+        })
+    </script>   
+</body>
+</html>

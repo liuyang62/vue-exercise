@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <p v-upper-case="msg">{{msg}}</p>
+        <p v-lower-case="msg">{{msg}}</p>
+        <p v-split="msg">{{msg}}</p>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.directive("lower-case",function(el,data){
+            el.textContent=data.value.toLowerCase()
+        })
+        new Vue({
+            el:"#root",
+            data:{
+                msg:"HelloWorld,El"
+            },
+            directives:{
+                ['upper-case'](el,data){
+                    el.textContent=data.value.toUpperCase()
+                },
+                ['split'](el,data){
+                    el.textContent=data.value.split("e")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

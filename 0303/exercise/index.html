@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+//     function obj(name){
+//     if(name){
+//     this.name=name//window.name="name1"
+//      }
+//   console.log(this)
+//   return this
+// }
+// obj.prototype.name="name2"
+// var a=obj("name1")//函数自调用，this指向window,传入参数返回window
+// var b=new obj
+// console.log(a.name,b.name)//window.name1="name1"
+const arr=[1,2,3];
+const re=arr.reduce((p,c)=>{
+ return p+=c>1?c:0
+},0)
+console.log(re)
+  </script>
+</body>
+</html>
